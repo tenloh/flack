@@ -1,0 +1,18 @@
+<img src="flackicon.png" class="logo">
+<img src="flackname.png" class="logo">
+
+<section>
+<!--   <table>
+  	<thead>CHANNELS</thead>
+  	<TBODY>
+  		<tr ng-repeat="channel in channels">{{channel}}</tr>
+  	</TBODY>
+  </table> -->
+  <h5 class="menu-item">CHANNELS</h5>
+    <div ng-repeat="channel in channels">
+      <div>
+        <h6><a ui-sref="channel({room: channel.id})">{{channel.name}}</a></h6>
+      </div>
+    </div>
+  </h5>
+</section>

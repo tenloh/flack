@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Flack</title>
+    <link href="/normalize.css/normalize.css" rel="stylesheet"/>
+    <!-- <link href="/wingcss/dist/wing.css" rel="stylesheet" /> -->
+     <link href="/bootstrap.min.css" rel="stylesheet" />
+    <link href="/bootstrap/dist/css/bootstrap-dark.css" rel="stylesheet" />
+    <link href="/style.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="flackicon.png" type="image/x-icon" /> </head>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand" rel="stylesheet">
+    <script src="/angular/angular.js" defer></script>
+    <script src="/angular-ui-router/release/angular-ui-router.js" defer></script>
+    <script src="/app.js" defer></script>
+    <script src="/sidebar/sidebar.controller.js" defer></script>
+    <script src="/sidebar/sidebar.directive.js" defer></script>
+    <script src="/main/main.controller.js" defer></script>
+    <script src="/main/main.directive.js" defer></script>
+    <script src="/message/message.controller.js" defer></script>
+    <script src="/message/message.factory.js" defer></script>
+    <script src="/message/message.state.js" defer></script>
+
+
+  </head>
+  <body ng-app='flack'>
+    <div id="main" class="container-fluid">
+     <div class="row">
+      <div class="col-sm-2">
+        <sidebar ng-controller="SidebarCtrl"></sidebar>
+      </div>
+      <div class="col-sm-10">
+        <ui-view></ui-view>
+        <flack-textbox></flack-textbox>
+      </div>
+</div>
+    </div>
+  </body>
+</html>
