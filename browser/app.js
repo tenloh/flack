@@ -1,7 +1,7 @@
 var app = angular.module('flack', ['ui.router'])
 
 app.config(function($urlRouterProvider){
-  $urlRouterProvider.otherwise('/2')
+  $urlRouterProvider.otherwise('/3')
 })
 app.directive('messageDir', function () {
   return {

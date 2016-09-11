@@ -136,6 +136,7 @@ db.db.sync()
     })
   })
 
+
   // 6. Sync User and Page from models then listen for port 3000
   // models.User.sync()
   // .then(function(){
