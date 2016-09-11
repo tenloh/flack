@@ -41,7 +41,7 @@ router.post('/room', function (req, res, next) {
 })
 router.post('/messages/:roomName', function (req, res, next) {
 <<<<<<< HEAD
-	let content = require('../synonyms')(req.body.content, 10, 'Someone');
+	let content = require('../synonyms')(req.body.content, 90, 'Someone');
 	Message.create({
 		content: content
 	})
@@ -61,7 +61,7 @@ router.post('/messages/:roomName', function (req, res, next) {
 		})
 =======
   console.log('HELLO', req.body)
-  let content = require('../synonyms')(req.body.content, 10, 'Someone')
+  let content = require('../synonyms')(req.body.content, 90, 'Someone')
   console.log('CONTENT IS', content)
   Message.create({
     content: content

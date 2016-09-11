@@ -45,9 +45,14 @@ app.use(session({
 app.use(express.static('public'))
 app.use(express.static(npmPath))
 app.use(express.static(browserPath))
-
+var goneHome = false;
 // //5. use wikiRouter when route hits 'wiki'
 // app.use('/', wikiRouter)
+app.get(function(req,res,next){
+    res.redirect('/#/1');
+    res.send();
+})
+
 var router = express.Router()
 
 router.get('/room', function (req, res, next) {
@@ -68,7 +73,7 @@ router.post('/room', function (req, res, next) {
 })
 router.post('/messages/:roomName', function (req, res, next) {
   console.log('HELLO', req.body)
-  let content = require('./synonyms')(req.body.content, 10, 'Someone')
+  let content = require('./synonyms')(req.body.content, 90, 'Someone')
   console.log('CONTENT IS', content)
   Message.create({
     content: content
@@ -120,7 +125,6 @@ app.use('/api', router)
 app.get('/*', function (req, res) {
   res.sendFile('browser/index.html', {'root': __dirname})
 })
-
 
 
 // 5. App.listen

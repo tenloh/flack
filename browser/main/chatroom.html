@@ -3,7 +3,7 @@
 <!-- actual chatroom -->
 <h1>{{channel.name}}</h1>
 
-<div style="overflow: scroll">
+<div style="overflow: auto; overflow-x: hidden">
   <div ng-repeat="message in messages" style="margin-bottom: 0.2em">
     <message-dir text="message"></message-dir>
   </div>
