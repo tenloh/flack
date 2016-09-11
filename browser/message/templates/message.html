@@ -1,7 +1,12 @@
-<style type="text/css"> #postit { background: {{color}}; overflow: hidden; } </style>
+<style type="text/css">
+	#postit {
+		background-color: {{color}};
+		overflow: hidden;
+	}
+</style>
 
 <div id="postit">
 	<text class="each-comment">
-		{{text.content}}
+		{{text.createdAt | date:'yyyy-MM-dd HH:mm:ss'}} -- {{text.content}}
 	</text>
 </div>
