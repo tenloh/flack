@@ -7,13 +7,17 @@ var Room = db.Room
 var Message = db.Message
 
 // 1a. sockets
-var server = require('http').createServer()
-var io = require('socket.io').listen(server)
+// var server = require('http').Server(app)
+// var io = require('socket.io')(server);
+// io.on('connection', function(socket){
+//   console.log("Hello, you've connected");
+//   console.log('ip server', socket.request.connection.remoteAddress); 
+// })
+// server.listen(3001, function () {
+//   console.log('The server is listening on port 3001!')
+// })
+// server.on('request', app)
 
-server.on('request', app)
-server.listen(1337, function () {
-  console.log('The server is listening on port 1337!')
-})
 
 // 2. require dependencies
 var bodyParser = require('body-parser')
@@ -53,30 +57,6 @@ router.get('/room', function (req, res, next) {
     })
 })
 
-router.get('/:id', function (req, res, next) {
-  var nsp = io.of('/' + req.params.id)
-  nsp.on('connection', socket => {
-    socket.on('post', () => {
-      socket.broadcast.emit('refresh')
-    })
-  })
-  Room.findOne({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(function (room) {
-      Message.findAll({
-        where: {
-          roomId: room.id
-        }
-      })
-        .then(function (messages) {
-          console.log(messages)
-          res.send([messages, room])
-        })
-    })
-})
 
 router.post('/room', function (req, res, next) {
   Room.create({
@@ -109,12 +89,39 @@ router.post('/messages/:roomName', function (req, res, next) {
     })
 })
 
-app.use('/api', router)
+router.get('/:id', function (req, res, next) {
+  // var nsp = io.of('/' + req.params.id)
+  // console.log('NSP', nsp);
+  // nsp.on('connection', socket => {
+  //   console.log('socket connection')
+  //   socket.on('post', () => {
+  //     socket.broadcast.emit('refresh')
+  //   })
+  // })
+  Room.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(function (room) {
+      Message.findAll({
+        where: {
+          roomId: room.id
+        }
+      })
+        .then(function (messages) {
+          res.send([messages, room])
+        })
+    })
+})
 
+app.use('/api', router)
 // 8. go  to the layout page when you hit main page or put random stuff after
 app.get('/*', function (req, res) {
   res.sendFile('browser/index.html', {'root': __dirname})
 })
+
+
 
 // 5. App.listen
 

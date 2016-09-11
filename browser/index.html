@@ -1,56 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Flack</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="/normalize.css/normalize.css" rel="stylesheet"/>
-    <!-- Bootstrap Core CSS -->
-    <link href="/bootstrap.min.css" rel="stylesheet" />
-    <!-- Custom CSS -->
-    <link href="/simple-sidebar.css" rel="stylesheet">
-    <link href="/style.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="flackicon.png" type="image/x-icon" /> </head>
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand" rel="stylesheet">
-    <script src="/angular/angular.js" defer></script>
-    <script src="/angular-ui-router/release/angular-ui-router.js" defer></script>
-    <script src="/app.js" defer></script>
-    <script src="/sidebar/sidebar.controller.js" defer></script>
-    <script src="/sidebar/sidebar.directive.js" defer></script>
-    <script src="/main/main.controller.js" defer></script>
-    <script src="/main/main.directive.js" defer></script>
-    <script src="/message/message.controller.js" defer></script>
-    <script src="/message/message.factory.js" defer></script>
-    <script src="/message/message.state.js" defer></script>
-  </head>
-  <body ng-app="flack">
-    <div id="wrapper">
-      <div id="main">
-        <div id="sidebar-wrapper">
-          <sidebar ng-controller="SidebarCtrl"></sidebar>
-        </div>
-        <div id="page-content-wrapper">
-          <div class="container-fluid">
-            <ui-view></ui-view>
-            <flack-textbox></flack-textbox>
-          </div>
+
+<head>
+  <title>Flack</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="/normalize.css/normalize.css" rel="stylesheet" />
+  <!-- Bootstrap Core CSS -->
+  <link href="/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link href="/simple-sidebar.css" rel="stylesheet">
+  <link href="/style.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="flackicon.png" type="image/x-icon" /> </head>
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand" rel="stylesheet">
+<!-- jQuery -->
+<script src="/socket.io-client/socket.io.js"></script>
+<script src="/js/jquery.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+<script src="/angular/angular.js" defer></script>
+<script src="/angular-ui-router/release/angular-ui-router.js" defer></script>
+<script src="/app.js" defer></script>
+<script src="/sidebar/sidebar.controller.js" defer></script>
+<script src="/sidebar/sidebar.directive.js" defer></script>
+<script src="/main/main.controller.js" defer></script>
+<script src="/main/main.directive.js" defer></script>
+<script src="/message/message.controller.js" defer></script>
+<script src="/message/message.factory.js" defer></script>
+<script src="/message/message.state.js" defer></script>
+<!--<script src="/socket/socket.factory.js" defer></script>-->
+</head>
+
+<body ng-app="flack">
+  <div id="wrapper">
+    <div id="main">
+      <div id="sidebar-wrapper">
+        <sidebar ng-controller="SidebarCtrl"></sidebar>
+      </div>
+      <div id="page-content-wrapper">
+        <div class="container-fluid">
+          <ui-view></ui-view>
+          <flack-textbox></flack-textbox>
         </div>
       </div>
     </div>
-    <!-- jQuery -->
-    <script src="socket.io/socket.io.js"></script>
-    <script src="js/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Menu Toggle Script -->
-    <script>
+  </div>
+   <!--Menu Toggle Script 
+  <script>
     $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
     });
-    </script>
-  </body>
+    </script>-->
+</body>
+
 </html>
