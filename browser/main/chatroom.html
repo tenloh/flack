@@ -4,9 +4,8 @@
 <h1>{{channel.name}}</h1>
 
 <div style="overflow: scroll">
-  <div ng-repeat="message in messages">
+  <div ng-repeat="message in messages" style="margin-bottom: 0.2em">
     <message-dir text="message"></message-dir>
-    <br/>
   </div>
 </div>
 <!-- <div class="channel_header">
