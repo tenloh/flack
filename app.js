@@ -115,7 +115,7 @@ router.get('/:id', function (req, res, next) {
         }
       })
         .then(function (messages) {
-          res.send([messages, room])
+          res.send([messages.reverse(), room])
         })
     })
 })
