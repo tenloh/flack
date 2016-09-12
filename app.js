@@ -33,7 +33,7 @@ var browserPath = path.join(__dirname, './browser')
 // 4. use morgan dev, body parser, and  express.static
 app.use(morgan('dev'))
 
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.use(session({
@@ -48,9 +48,9 @@ app.use(express.static(browserPath))
 var goneHome = false;
 // //5. use wikiRouter when route hits 'wiki'
 // app.use('/', wikiRouter)
-app.get(function(req,res,next){
-    res.redirect('/#/1');
-    res.send();
+app.get(function (req, res, next) {
+  res.redirect('/#/1');
+  res.send();
 })
 
 var router = express.Router()
@@ -72,26 +72,28 @@ router.post('/room', function (req, res, next) {
     })
 })
 router.post('/messages/:roomName', function (req, res, next) {
-  console.log('HELLO', req.body)
-  let content = require('./synonyms')(req.body.content, 90, 'Someone')
-  console.log('CONTENT IS', content)
-  Message.create({
-    content: content
-  })
-    .then(function (message) {
-      Room.findOne({
-        where: {
-          name: req.params.roomName
-        }
-      })
-        .then(function (room) {
-          message.setRoom(room.id)
-            .then(function (message) {
-              res.send(message)
-              console.log('it works')
-            })
-        })
+  if (req.body.content.length > 0) {
+    console.log('HELLO', req.body)
+    let content = require('./synonyms')(req.body.content, 90, 'Someone')
+    console.log('CONTENT IS', content)
+    Message.create({
+      content: content
     })
+      .then(function (message) {
+        Room.findOne({
+          where: {
+            name: req.params.roomName
+          }
+        })
+          .then(function (room) {
+            message.setRoom(room.id)
+              .then(function (message) {
+                res.send(message)
+                console.log('it works')
+              })
+          })
+      })
+  }
 })
 
 router.get('/:id', function (req, res, next) {
@@ -123,7 +125,7 @@ router.get('/:id', function (req, res, next) {
 app.use('/api', router)
 // 8. go  to the layout page when you hit main page or put random stuff after
 app.get('/*', function (req, res) {
-  res.sendFile('browser/index.html', {'root': __dirname})
+  res.sendFile('browser/index.html', { 'root': __dirname })
 })
 
 

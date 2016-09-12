@@ -40,6 +40,8 @@ router.post('/room', function (req, res, next) {
     })
 })
 router.post('/messages/:roomName', function (req, res, next) {
+  console.log(req.body.content);
+  if (!req.body.content || req.body.content === '') return res.end();
 <<<<<<< HEAD
 	let content = require('../synonyms')(req.body.content, 90, 'Someone');
 	Message.create({
