@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 
-var db = new Sequelize(env.DATABASE_URL, {
+var db = new Sequelize(process.env.DATABASE_URL, {
   logging: false
 })
 
