@@ -1,3 +1,5 @@
+'use strict'
+
 // 1. require express and create a pipeline to it
 var express = require('express')
 var session = require('express-session')
