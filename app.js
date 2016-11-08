@@ -135,8 +135,9 @@ app.get('/*', function (req, res) {
 
 db.db.sync()
   .then(function () {
-    app.listen(3001, function () {
-      console.log('Listening on Port 3001')
+    let port = process.env.PORT || 3001;
+    app.listen(port, function () {
+      console.log('Listening on Port ' + port);
     })
   })
 
